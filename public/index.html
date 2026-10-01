@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Student Management Portal</h1>
+      <p>Full Stack Virtual Internship Project</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat-card"><span>Total Students</span><strong id="totalStudents">0</strong></div>
+      <div class="stat-card"><span>Departments</span><strong id="totalDepartments">0</strong></div>
+      <div class="stat-card"><span>Courses</span><strong id="totalCourses">0</strong></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2 id="formTitle">Add Student</h2>
+        <button class="secondary" id="cancelBtn" onclick="resetForm()" hidden>Cancel Edit</button>
+      </div>
+
+      <form id="studentForm">
+        <input type="hidden" id="recordId">
+
+        <div class="form-grid">
+          <label>Student ID *
+            <input id="student_id" required placeholder="e.g. STU001">
+          </label>
+          <label>Full Name *
+            <input id="name" required placeholder="Student name">
+          </label>
+          <label>Email *
+            <input id="email" type="email" required placeholder="student@email.com">
+          </label>
+          <label>Phone *
+            <input id="phone" inputmode="numeric" maxlength="10" required placeholder="10 digit number">
+          </label>
+          <label>Course *
+            <input id="course" required placeholder="B.Tech">
+          </label>
+          <label>Department *
+            <input id="department" required placeholder="CSE / AI & ML">
+          </label>
+          <label>Semester *
+            <input id="semester" type="number" min="1" max="12" required placeholder="5">
+          </label>
+          <label>Date of Birth
+            <input id="dob" type="date">
+          </label>
+        </div>
+
+        <button class="primary" type="submit" id="submitBtn">Add Student</button>
+      </form>
+      <div id="message"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header table-header">
+        <h2>Student Records</h2>
+        <input id="search" class="search" placeholder="Search by ID, name, email, course..." oninput="loadStudents()">
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Course</th>
+              <th>Department</th>
+              <th>Sem</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
